@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="getpayload.jsf" id="d1">
+        <af:form id="f1">
+            <af:panelGridLayout id="pgl2">
+                <af:gridRow height="50px" id="gr2">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
+                        <!-- Header -->
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow height="100%" id="gr1">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc2">
+                        <af:panelGroupLayout layout="scroll" id="pgl1">
+                            <!-- Content -->
+                        </af:panelGroupLayout>
+                    </af:gridCell>
+                </af:gridRow>
+            </af:panelGridLayout>
+        </af:form>
+    </af:document>asdadad
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_get_payload-->
+</f:view>
