@@ -1,7 +1,8 @@
 package com.ora.jpreyes.com.ora.jpreyes.params;
 
+import java.io.File;
+
 public class CallRequest {
-    public CallRequest() {
-        super();
-    }
+    private String payloadXmlString;
+    private File payloadFileXml;
 }

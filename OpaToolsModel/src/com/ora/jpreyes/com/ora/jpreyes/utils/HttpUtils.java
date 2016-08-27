@@ -3,7 +3,7 @@ package com.ora.jpreyes.com.ora.jpreyes.utils;
 import HTTPClient.HttpURLConnection;
 import com.ora.jpreyes.com.ora.jpreyes.params.CallRequest;
 import com.ora.jpreyes.com.ora.jpreyes.params.CallResponse;
-import com.ora.jpreyes.com.ora.jpreyes.params.CallResult;
+import com.ora.jpreyes.com.ora.jpreyes.params.CallResponse;
 import com.ora.jpreyes.com.ora.jpreyes.params.CallUrl;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -26,27 +26,75 @@ public class HttpUtils {
      * @param callUrl
      * @return
      */
-    public CallResult callHttpUrl(CallUrl callUrl) throws IOException {
+    public static CallResponse callHttpUrl(CallUrl callUrl) throws IOException {
         // Return the String response (even if error);
-        CallResult callResult = new CallResult();
+        
         //  Create the connection (must be http connection).
-        URL url = new URL(callUrl.getUrlString());
+        URL url = new URL(callUrl.getUrl());
         URLConnection urlConnection = url.openConnection();
         HttpURLConnection httpConn = (HttpURLConnection) urlConnection;
         
-        callResult.setResponseCode(httpConn.getResponseCode());
-        callResult.setResponseMessage(httpConn.getResponseMessage());
-        return callResult;
+        //  Build the response object.
+        CallResponse callResponse = new CallResponse.Builder(
+                    httpConn.getResponseMessage(), 
+                    httpConn.getResponseCode())
+            .build();
+        return callResponse;
     }
     
-    public CallResult callHttpUrl(CallRequest callRequest, CallUrl callUrl) {
-        return null;
-    }
-    
-    public boolean checkHttpUrlAvailability(CallUrl urlParam) {
+    /**
+     * This method is used to just check the HTTP URL if it's alive or not.
+     * @param callUrl
+     * @return true if the url is available, otherwise, false.
+     * @throws IOException
+     */
+    public static boolean checkHttpUrlAvailability(CallUrl callUrl) throws IOException {
+        // Return the String response (even if error);
+        //  Create the connection (must be http connection).
+        URL url = new URL(callUrl.getUrl());
+        URLConnection urlConnection = url.openConnection();
+        HttpURLConnection httpConn = (HttpURLConnection) urlConnection;
+        
+        if(httpConn.getResponseCode() != HttpURLConnection.HTTP_OK){
+            return false;
+        }
         return true;
     }
     
+    /**
+     * This method is used to check the http url response message only.
+     * @param callUrl
+     * @return the response message
+     * @throws IOException
+     */
+    public static String checkHttpUrlResponseMessage(CallUrl callUrl) throws IOException {
+        // Return the String response (even if error);
+        //  Create the connection (must be http connection).
+        URL url = new URL(callUrl.getUrl());
+        URLConnection urlConnection = url.openConnection();
+        HttpURLConnection httpConn = (HttpURLConnection) urlConnection;
+        
+        return httpConn.getResponseMessage();
+    }
     
+    /**
+     * This method is used to check the response code only.
+     * @param callUrl
+     * @return the response code
+     * @throws IOException
+     */
+    public static int checkHttpUrlResponseCode(CallUrl callUrl) throws IOException {
+        // Return the String response (even if error);
+        CallResponse callResult = new CallResponse();
+        //  Create the connection (must be http connection).
+        URL url = new URL(callUrl.getUrl());
+        URLConnection urlConnection = url.openConnection();
+        HttpURLConnection httpConn = (HttpURLConnection) urlConnection;
+        
+        return httpConn.getResponseCode();
+    }
     
+    public static CallResponse callHttpUrl(CallRequest callRequest, CallUrl callUrl) throws IOException {
+        return null;
+    }
 }
