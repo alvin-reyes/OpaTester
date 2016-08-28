@@ -7,10 +7,15 @@ import java.util.Map;
 
 public class CallRequest {
     
+    // Methods.
+    private final String METHOD_POST = "POST";
+    private final String METHOD_GET = "GET";
+    
     //  Just optional parameters.
     private Map<String,String> requestParameters = new HashMap<String,String>();
     private Map<String,String> requestHeaders = new HashMap<String,String>();
     private CallParameters callParameters = new CallParameters();
+    private String method = "";
     
     //  Payloads
     private String payloadXmlString = null;
@@ -32,13 +37,19 @@ public class CallRequest {
         return payloadFileXml;
     }
 
+    public String getMethod() {
+        return method;
+    }
+
     public static class Builder {
         private String payloadXmlString = "";
         private File payloadFileXml = null;
+       
         
         //  Optional
         private Map<String,String> requestParameters = null;
         private Map<String,String> requestHeaders = null;
+        private String method = null;
         
         public Builder(String payloadXmlString) {
             this.payloadXmlString  = payloadXmlString;
@@ -53,6 +64,10 @@ public class CallRequest {
         }
         public Builder headers(Map<String,String> requestHeaders) {
             this.requestHeaders = requestHeaders;
+            return this;
+        }
+        public Builder method(String method) {
+            this.method = method;
             return this;
         }
         
