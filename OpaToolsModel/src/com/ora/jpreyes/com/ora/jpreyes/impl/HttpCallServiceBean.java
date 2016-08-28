@@ -19,11 +19,8 @@ import javax.ws.rs.HeaderParam;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
-@Stateless(name = "HttpCallServiceBean")
 @Path("/HttpCallService")
-public class HttpCallServiceBean implements HttpCallService, HttpCallServiceBeanLocal {
-    @Resource
-    SessionContext sessionContext;
+public class HttpCallServiceBean implements HttpCallService {
     
     @Override
     @GET
