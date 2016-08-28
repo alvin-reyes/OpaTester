@@ -8,7 +8,7 @@ import javax.faces.bean.RequestScoped;
 
 import oracle.adf.view.rich.component.rich.output.RichOutputText;
 
-@ManagedBean(name = "OpaIndexBBean")
+@ManagedBean(name="OpaIndexBBean")
 @RequestScoped
 @Generated(value = "1index.jsf", comments = "oracle-jdev-comment:managed-bean-jsp-link")
 public class OpaIndexBean {
