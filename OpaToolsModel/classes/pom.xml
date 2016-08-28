@@ -38,6 +38,15 @@
             <groupId>org.apache.axis</groupId>
             <artifactId>axis-saaj</artifactId>
             <version>1.4</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.oracle.adf.library</groupId>
+            <artifactId>JAX-RS-Jersey-2.x</artifactId>
+            <version>12.2.1-0-0</version>
+            <type>pom</type>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
     <build>

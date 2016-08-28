@@ -11,4 +11,5 @@
   <library-ref>
     <library-name>adf.oracle.domain</library-name>
   </library-ref>
+  
 </weblogic-application>

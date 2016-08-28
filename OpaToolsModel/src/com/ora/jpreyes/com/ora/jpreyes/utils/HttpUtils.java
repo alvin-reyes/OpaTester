@@ -76,7 +76,11 @@ public class HttpUtils {
                     httpConn.getResponseMessage(), 
                     httpConn.getResponseCode())
             .build();
-        return callResponse;
+        
+        if(httpConn.getResponseCode() != HttpURLConnection.HTTP_OK){
+            return false;
+        }
+        return true;
     }
     
     /**

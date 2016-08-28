@@ -14,15 +14,21 @@ import javax.annotation.Resource;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 
+import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
+import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
-@Stateless(name = "HttpCallServiceBean", mappedName = "opa-tools-OpaToolsModel-HttpCallServiceBean")
+@Stateless(name = "HttpCallServiceBean")
+@Path("/HttpCallService")
 public class HttpCallServiceBean implements HttpCallService, HttpCallServiceBeanLocal {
     @Resource
     SessionContext sessionContext;
     
     @Override
-    public boolean checkUrl(@PathParam(value="-1") String urlString) {    
+    @GET
+    @Path("/checkUrl")
+    public boolean checkUrl(@HeaderParam("urlString") String urlString) {    
         try {
             return HttpUtils.checkHttpUrlAvailability(urlString);
         }catch(Exception e) {

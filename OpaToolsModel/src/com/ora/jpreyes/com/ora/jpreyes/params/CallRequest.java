@@ -75,8 +75,6 @@ public class CallRequest {
             
             //  Parse xml, create a new one an exhange the placeholders {{VAL}}
             //  witht the one's on CallParameter Object.
-            
-            
             return new CallRequest(this);
         }
     }

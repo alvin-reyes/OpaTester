@@ -87,6 +87,7 @@
          <string v="EJB"/>
          <string v="Java"/>
          <string v="Maven"/>
+         <string v="RESTWebServices"/>
          <string v="WSDL"/>
          <string v="WSPolicy"/>
          <string v="WebServices"/>
