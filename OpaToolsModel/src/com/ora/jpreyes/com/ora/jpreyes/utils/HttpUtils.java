@@ -1,12 +1,11 @@
 package com.ora.jpreyes.com.ora.jpreyes.utils;
 
-import HTTPClient.HttpURLConnection;
 import com.ora.jpreyes.com.ora.jpreyes.params.CallRequest;
 import com.ora.jpreyes.com.ora.jpreyes.params.CallResponse;
-import com.ora.jpreyes.com.ora.jpreyes.params.CallResponse;
 import com.ora.jpreyes.com.ora.jpreyes.params.CallUrl;
-import java.io.FileInputStream;
 import java.io.IOException;
+
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 
@@ -85,7 +84,6 @@ public class HttpUtils {
      */
     public static int checkHttpUrlResponseCode(CallUrl callUrl) throws IOException {
         // Return the String response (even if error);
-        CallResponse callResult = new CallResponse();
         //  Create the connection (must be http connection).
         URL url = new URL(callUrl.getUrl());
         URLConnection urlConnection = url.openConnection();

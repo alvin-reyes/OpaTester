@@ -80,12 +80,17 @@
       <value n="ejbMetaDataPrefs" v="PREFASANNON"/>
       <value n="ejbVersion" v="3.0"/>
       <value n="ejbVersionMinor" v="0.1"/>
+      <url n="weblogicEjbJarNodeURL" path="src/META-INF/weblogic-ejb-jar.xml"/>
    </hash>
    <hash n="oracle.ide.model.TechnologyScopeConfiguration">
       <list n="technologyScope">
          <string v="EJB"/>
          <string v="Java"/>
          <string v="Maven"/>
+         <string v="WSDL"/>
+         <string v="WSPolicy"/>
+         <string v="WebServices"/>
+         <string v="XML"/>
       </list>
    </hash>
    <hash n="oracle.jdeveloper.compiler.OjcConfiguration">
@@ -93,6 +98,43 @@
    </hash>
    <hash n="oracle.jdeveloper.deploy.dt.DeploymentProfiles">
       <hash n="profileDefinitions">
+         <hash n="EjbWebServices">
+            <hash n="archiveOptions">
+               <value n="hasManifest" v="true"/>
+            </hash>
+            <url n="earURL" path="deploy/EjbWebServices.ear"/>
+            <value n="enterpriseAppName" v="WebServices_opa-tools_OpaToolsModel"/>
+            <hash n="fileGroups">
+               <list n="groups">
+                  <hash>
+                     <list n="contributors">
+                        <hash>
+                           <value n="type" v="2"/>
+                        </hash>
+                        <hash>
+                           <value n="type" v="7"/>
+                        </hash>
+                     </list>
+                     <value n="displayName" v="Project Output"/>
+                     <hash n="filters">
+                        <list n="rules">
+                           <hash>
+                              <value n="pattern" v="**"/>
+                              <value n="type" v="0"/>
+                           </hash>
+                        </list>
+                     </hash>
+                     <value n="internalName" v="project-output"/>
+                     <value n="type" v="1"/>
+                  </hash>
+               </list>
+            </hash>
+            <url n="jarURL" path="deploy/EjbWebServices.jar"/>
+            <value n="platformType" v="WEBLOGIC"/>
+            <value n="platformVersion" v="12.0.0.0"/>
+            <value n="profileClass" v="oracle.jdeveloper.deploy.ejb.EjbProfile"/>
+            <value n="profileName" v="EjbWebServices"/>
+         </hash>
          <hash n="opa-tools_OpaToolsModel_ejb">
             <hash n="archiveOptions">
                <value n="hasManifest" v="true"/>
@@ -131,6 +173,7 @@
       </hash>
       <list n="profileList">
          <string v="opa-tools_OpaToolsModel_ejb"/>
+         <string v="EjbWebServices"/>
       </list>
    </hash>
    <hash n="oracle.jdeveloper.maven.compiler.MavenConfiguration">

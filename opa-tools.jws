@@ -3,6 +3,9 @@
    <hash n="adrs-workspace-properties">
       <value n="adrs-instance-binding" v="DefaultServer"/>
    </hash>
+   <hash n="adrs-workspace-weblogic-properties">
+      <value n="hot-class-reload" v="ide-default"/>
+   </hash>
    <value n="application-package-prefix" v="com.ora.jpreyes"/>
    <value n="appTemplateId" v="javaEEWebAppTemplate"/>
    <hash n="component-versions">
@@ -33,6 +36,7 @@
    </list>
    <hash n="oracle.jdeveloper.maven.compiler.MavenConfiguration">
       <hash n="oracle.jdeveloper.maven.compiler.MavenConfiguration">
+         <value n="defaultExecuteRadioButtonSelected" v="true"/>
          <url n="pomfileURL" path="pom.xml"/>
       </hash>
    </hash>
