@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-  .module('OpaToolApp', [
+  .module('OpaToolsApp', [
     'ngAnimate',
     'ngAria',
     'ngCookies',
@@ -14,12 +14,12 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'index.html',
-        controller: 'IndexCtrl'
+        templateUrl: 'pages/main.html',
+        controller: 'MainCtrl'
       })
-      .when('/about', {
-        templateUrl: 'pages/about.html',
-        controller: 'AboutCtrl'
+      .when('/servicecheck', {
+        templateUrl: 'pages/servicecheck.html',
+        controller: 'ServiceCheckCtrl'
       })
       .otherwise({
         redirectTo: '/'
