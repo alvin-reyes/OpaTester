@@ -4,7 +4,7 @@
     <default-render-kit-id>oracle.adf.rich</default-render-kit-id>
   </application>
   <navigation-rule>
-    <from-view-id>/index.jsf</from-view-id>
+    <from-view-id>/index.html</from-view-id>
     <navigation-case>
       <from-outcome>success</from-outcome>
       <to-view-id>/getpayload.jsf</to-view-id>

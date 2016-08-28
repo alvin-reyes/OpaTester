@@ -84,10 +84,12 @@
    </hash>
    <hash n="oracle.ide.model.TechnologyScopeConfiguration">
       <list n="technologyScope">
+         <string v="Database"/>
          <string v="EJB"/>
          <string v="Java"/>
          <string v="Maven"/>
          <string v="RESTWebServices"/>
+         <string v="TopLink"/>
          <string v="WSDL"/>
          <string v="WSPolicy"/>
          <string v="WebServices"/>
