@@ -1,0 +1,113 @@
+
+<div class="col-lg-6" ng-repeat="team in services" style="margin-bottom:10px;">
+<div ng-class="{'col-lg-14 panel panel-primary' : team.team_status == 'active','col-lg-14 panel panel-red' : team.team_status != 'active'}" >
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="btn btn-default btn-sm" ng-click="podDetails(team)">{{team.name}}</div>
+                <div class="btn btn-default btn-sm" ng-click="doctorDetailOptions(team.doctor)">{{team.doctor.name}}</div>
+                <div class="btn btn-default btn-sm glyphicon glyphicon-retweet" ng-click="switchWithAnotherDoctor(team,team.doctor)"></div>
+            </div>
+            <div class="col-md-7">
+                <div class="btn-group pull-right" uib-dropdown dropdown-append-to-body>
+                              <button id="btn-append-to-body" type="button" class="btn btn-default glyphicon glyphicon-chevron-down" uib-dropdown-toggle>
+                                <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">
+                            
+                                  <li role="menuitem">
+                                   <a href="#" ng-click="assignNurse(team)" ng-show="team.team_status == 'active'">Assign Nurse
+                                    </a>
+                                  </li>
+                                    <li class="divider"></li>
+                                <li role="menuitem">
+                                    <a href="#" ng-click="removePod(team)" class="">Remove</a>
+                                </li>
+                                <li role="menuitem">
+                                    <a href="#" ng-click="markTeamAsBusy(team)" class="">
+                                        <div ng-show="team.team_status == 'active'"><b style="color:red;">BUSY</b></div>
+                                        <div ng-show="team.team_status != 'active'"><b style="color:green;">ACTIVE</b></div>
+                                    </a>
+                                </li>
+                   
+
+                              </ul>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-body">
+        <div class="dataTable_wrapper">
+            <table class="table table-bordered table-hover" id="patientDataTable_{{shift.id}}">
+                <thead>
+                    <tr>
+                        <th>Action</th>
+                        <th>RN</th>
+                        <th>Patient Name(s)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="member in team.members">
+                            <td class="col-md-1 text-center">
+                            <div class="btn-group" uib-dropdown dropdown-append-to-body>
+                              <button id="btn-append-to-body" type="button" class="btn btn-primary glyphicon glyphicon-chevron-down" uib-dropdown-toggle>
+                                <span class="caret" ></span>
+                              </button>
+                              <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">
+                                <li role="menuitem">
+                                    <a href="#" ng-click="reassignNurse(member,team)" class="">Reassign</a>
+                                </li>
+                                <li role="menuitem">
+                                    <a href="#" ng-click="switchWithAnotherNurse(member,team)" class="">Switch</a>
+                                </li>
+                                <li role="menuitem">
+                                    <a href="#" ng-click="removeNurse(member,team)" class="">Remove</a>
+                                </li>
+                                <li role="menuitem">
+                                    <a href="#" ng-click="markMemberAsBusy(member,team)" class="">
+                                        <div ng-show="member.member_status == 'active'"><b style="color:red;">BUSY</b></div>
+                                        <div ng-show="member.member_status != 'active'"><b style="color:green;">ACTIVE</b></div>
+                                    </a>
+                                </li>
+
+                              </ul>
+        
+                                </div>
+                            </td>
+                            <td class="col-md-3" style="font-size:14px;">
+                                <div ng-class="{'btn btn-default' : member.member_status == 'active','btn btn-danger' : member.member_status != 'active'}" ng-click="memberDetails(member)">{{member.name}}</div>
+                            </td>
+                            <td>
+                                
+                                <div class="btn-group" style="margin: 5px 5px 5px 5px;" uib-dropdown ng-repeat="patient in member.assigned_patient">
+                                  <button id="split-button" type="button" class="btn btn-success btn-sm" ng-click="patientDetails(patient)">{{patient.name}}</button>
+                                  <button type="button" class="btn btn-success btn-sm" uib-dropdown-toggle>
+                                    <span class="caret"></span>
+                                    <span class="sr-only"></span>
+                                  </button>
+                                  <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">
+                                                <li role="menuitem"><a ng-click="reassignPatient(patient,member,team)">Re-assign</a></li>
+                                                <li role="menuitem"><a ng-click="dischargePatient(patient,member,team)">Discharge</a></li>
+                                              </ul>
+                                </div>
+                            </td>
+                       </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="panel-footer">
+
+    </div>
+    </div>
+    
+</div>
+
+<div class="col-lg-6">
+    <div ng-click="newPod()" class="btn btn-default btn-lg panel panel-default "  style="border-style: dashed;">
+        +
+    </div>
+</div>
+
