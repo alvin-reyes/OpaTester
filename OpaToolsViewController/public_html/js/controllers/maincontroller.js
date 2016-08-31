@@ -1,10 +1,16 @@
 'use strict';
 
 angular.module('OpaToolsApp')
-  .controller('MainCtrl', function () {
+  .controller('MainCtrl', function ($scope) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
-      'AngularJS',
+      'AngularJS',  
       'Karma'
     ];
+    
+    
+    
+    $scope.changeHosts = function(value) {
+        
+    }
   });

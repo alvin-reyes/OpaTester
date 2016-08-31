@@ -1,6 +1,5 @@
 package com.ora.jpreyes.com.ora.jpreyes.impl;
 
-import com.ora.jpreyes.com.ora.jpreyes.impl.intf.HttpCallServiceBeanLocal;
 import com.ora.jpreyes.com.ora.jpreyes.impl.intfremote.HttpCallService;
 
 import com.ora.jpreyes.com.ora.jpreyes.params.CallResponse;

@@ -7,36 +7,6 @@
   <description>Generated POM from JDeveloper for project OpaToolsViewController</description>
   <packaging>war</packaging>
   <dependencies>
-    <dependency>
-      <groupId>com.ora.jpreyes</groupId>
-      <artifactId>OpaToolsModel</artifactId>
-      <version>1.0-SNAPSHOT</version>
-      <type>jar</type>
-    </dependency>
-    <dependency>
-      <groupId>com.oracle.adf.library</groupId>
-      <artifactId>JSP-Runtime</artifactId>
-      <version>12.2.1-0-0</version>
-      <type>pom</type>
-    </dependency>
-    <dependency>
-      <groupId>com.oracle.adf.library</groupId>
-      <artifactId>JSF</artifactId>
-      <version>12.2.1-0-0</version>
-      <type>pom</type>
-    </dependency>
-    <dependency>
-      <groupId>com.oracle.adf.library</groupId>
-      <artifactId>JSTL</artifactId>
-      <version>12.2.1-0-0</version>
-      <type>pom</type>
-    </dependency>
-    <dependency>
-      <groupId>com.oracle.adf.library</groupId>
-      <artifactId>ADF-Faces-Runtime-11</artifactId>
-      <version>12.2.1-0-0</version>
-      <type>pom</type>
-    </dependency>
   </dependencies>
   <build>
     <sourceDirectory>src/</sourceDirectory>
@@ -62,4 +32,9 @@
       </plugin>
     </plugins>
   </build>
+  <properties>
+    <oracleHome>
+      ${env.ORACLE_HOME}
+    </oracleHome>
+  </properties>
 </project>
