@@ -1,11 +1,12 @@
 'use strict';
 
-angular.module('OpaToolsApp').directive('servicecheck', function($uibModal) {
+angular.module('OpaToolsApp').directive('servicecheck', function($uibModal,$http) {
   return {
     restrict: 'EA',
     templateUrl: 'pages/directives/servicecheckdirective.html',
     scope: {
-      services: '=services'
+      services: '=services',
+      servers:'=servers'
     },
     link: function($scope, element, attr, ctrl) {
         
@@ -21,6 +22,21 @@ angular.module('OpaToolsApp').directive('servicecheck', function($uibModal) {
                 }
             }
             return doctorArray;
+        }
+        
+           
+        $scope.selectServer = function(item) {
+            console.log(item);
+            for( var i=0;i<$scope.services.length;i++) {
+                $scope.services[i].name = item + $scope.services[i].name;
+                console.log($scope.services[i].status);
+                $http.get($scope.services[i].name)
+                    .then(
+                        function(resp) { console.log($scope.services[i].status); $scope.services[i].status = resp.status;}
+                    ,   function(resp) { console.log($scope.services[i].status); $scope.services[i].status = resp.status;}
+                    );
+                //  Run the checks after.
+            }
         }
         
         $scope.checkService = function(service) {
