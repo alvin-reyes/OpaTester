@@ -1,9 +1,9 @@
+<h2>Server URL:</h2>
 <div class='container-fluid typeahead-demo'>
     <input type="text" ng-model="selectedServer" uib-typeahead="server for server in servers | filter:$viewValue | limitTo:8" class="form-control"
     typeahead-on-select="selectServer($item)">
-    
-    
-      <h2>Bordered with Striped Rows</h2>
+      
+      <h2>Services</h2>
         <div class="table-responsive">
             <table class="table table-bordered table-hover table-striped">
                 <thead>
@@ -17,7 +17,10 @@
                     <tr ng-repeat="service in services">
                         <td>{{service.name}}</td>
                         <td>{{service.status}}</td>
-                        <td><button ng-click="checkService(service)">Check Status</button></td>
+                        <td>
+                            <button ng-click="checkService(service)">Check Status</button>
+                            <button ng-click="checkService(service)">Submit Payload</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
