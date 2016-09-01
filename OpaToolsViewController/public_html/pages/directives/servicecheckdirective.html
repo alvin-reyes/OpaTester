@@ -1,8 +1,5 @@
 <div class='container-fluid typeahead-demo'>
-
-    <h4>Static arrays</h4>
-    <pre>Model: {{selected | json}}</pre>
-    <input type="text" ng-model="selected" uib-typeahead="server for server in servers | filter:$viewValue | limitTo:8" class="form-control"
+    <input type="text" ng-model="selectedServer" uib-typeahead="server for server in servers | filter:$viewValue | limitTo:8" class="form-control"
     typeahead-on-select="selectServer($item)">
     
     
@@ -20,7 +17,7 @@
                     <tr ng-repeat="service in services">
                         <td>{{service.name}}</td>
                         <td>{{service.status}}</td>
-                        <td>{{service.action}}</td>
+                        <td><button ng-click="checkService(service)">Check Status</button></td>
                     </tr>
                 </tbody>
             </table>

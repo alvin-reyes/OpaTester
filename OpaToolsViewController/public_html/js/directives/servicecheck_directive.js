@@ -9,7 +9,7 @@ angular.module('OpaToolsApp').directive('servicecheck', function($uibModal,$http
       servers:'=servers'
     },
     link: function($scope, element, attr, ctrl) {
-        
+        $scope.selectedServer = '';
         $scope.selectedDoctor = undefined;
         $scope.doctors = function() { 
             var doctorArray = [];
@@ -23,7 +23,6 @@ angular.module('OpaToolsApp').directive('servicecheck', function($uibModal,$http
             }
             return doctorArray;
         }
-        
            
         $scope.selectServer = function(item) {
             console.log(item);
@@ -31,20 +30,33 @@ angular.module('OpaToolsApp').directive('servicecheck', function($uibModal,$http
             for( var i=0;i<$scope.services.length;i++) {
                 $scope.services[i].name = item + $scope.services[i].name;
                 console.log($scope.services[i].status);
-                var promise = $http.get($scope.services[i].name)
-                    .then(
-                        function(resp) { console.log($scope.services[i].status); $scope.services[i].status = resp.status;}
-                    ,   function(resp) { console.log($scope.services[i].status); $scope.services[i].status = resp.status;}
-                    );
+                var promise = $http.get($scope.services[i].name);
+                promise.success(function(data, status, headers, config) {
+                    console.log(status);
+                    $scope.services[i].status = "OK";
+                });
+                promise.error(function(data, status, headers, config) {
+                    console.log(status);
+                    $scope.services[i].status = "NOT OK";
+                });
                 //  Run the checks after.
                 promiseArray.push(promise);
-                
             }
-            $q.add(promiseArray);
+            $q.all(promiseArray);
+            
+            console.log(promiseArray);
         }
         
         $scope.checkService = function(service) {
-            console.log("hello");
+            var promise = $http.get(service.name);
+            promise.success(function(data, status, headers, config) {
+                console.log(status);
+                service.status = "OK";
+            });
+            promise.error(function(data, status, headers, config) {
+                console.log(status);
+                service.status = "NOT OK";
+            });
         }
     }
   }
